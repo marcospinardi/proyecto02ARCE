@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Categoria;
+use App\Producto;
 use Illuminate\Http\Request;
 
-class CategoriasController extends Controller
+class ProductosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,11 @@ class CategoriasController extends Controller
     public function index()
     {
         //
-        $categorias = Categoria::paginate(6);
-        return view('adminCategorias', [ 'categorias' =>  $categorias ]);
+        $productos = Producto::all();
+        return view('adminProductos',
+            [
+                'productos'=>$productos
+            ]);
     }
 
     /**

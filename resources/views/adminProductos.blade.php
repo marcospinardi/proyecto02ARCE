@@ -1,0 +1,51 @@
+@extends('layout.plantilla')
+
+    @section('title', 'Panel de Productos')
+
+    @section('h1', 'Panel de Productos')
+
+    @section('main')
+
+        <table class="table table-hover table-striped table-border">
+            <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Marca</th>
+                <th>Categoria</th>
+                <th>Presentacion</th>
+                <th>Stock</th>
+                <th>Imagden</th>
+                <th colspan="2">
+                    <a href="" class="btn btn-dark">
+                        Agregar
+                    </a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+        @foreach( $productos as $producto )
+            <tr>
+                <td>{{ $producto->prdNombre }}</td>
+                <td>{{ $producto->prdPrecio }}</td>
+                <td>{{ $producto->idMarca }}</td>
+                <td>{{ $producto->idCategoria }}</td>
+                <td>{{ $producto->Presentacion }}</td>
+                <td>{{ $producto->prdStock }}</td>
+                <td><img src="{{ asset('images/productos') }}/{{ $producto->prdImagen }}" class="img-thumbnail"></td>
+                <td>
+                    <a href="" class="btn btn-outline-secondary">
+                        Modificar
+                    </a>
+                </td>
+                <td>
+                    <a href="" class="btn btn-outline-secondary">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+        @endforeach
+            </tbody>
+        </table>
+
+    @endsection

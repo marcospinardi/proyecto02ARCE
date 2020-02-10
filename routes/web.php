@@ -33,4 +33,8 @@ Route::get('/form', function(){
     return view('formulario');
 });
 
-Route::get('/listarCategorias', 'CategoriasController@index');
+//Route::view('/adminCategorias', 'adminCategorias');
+Route::get('/adminCategorias', 'CategoriasController@index');
+
+############## CR D PRODUCTOS ###################
+Route::get('/adminProductos', 'ProductosController@index');
