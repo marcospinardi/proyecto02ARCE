@@ -48,7 +48,8 @@ class MarcasController extends Controller
         $Marca = new Marca;
         $Marca->mkNombre = $mkNombre;
         $Marca->save();
-
+        return redirect('/adminMarcas')
+            ->with('mensaje', 'Marca '.$Marca->mkNombre.' agregada con éxito');
     }
 
     /**
@@ -71,6 +72,8 @@ class MarcasController extends Controller
     public function edit($id)
     {
         //
+        $marca = Marca::find($id);
+        return view('formModificarMarca', [ 'marca'=>$marca ]);
     }
 
     /**
@@ -80,9 +83,14 @@ class MarcasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        $Marca = Marca::find($request->input('idMarca'));
+        $Marca->mkNombre = $request->input('mkNombre');
+        $Marca->save();
+        return redirect('/adminMarcas')
+            ->with('mensaje', 'Marca '.$Marca->mkNombre.' modificada con éxito');
     }
 
     /**

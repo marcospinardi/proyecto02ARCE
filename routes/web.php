@@ -40,6 +40,9 @@ Route::get('/adminCategorias', 'CategoriasController@index');
 Route::get('/adminMarcas', 'MarcasController@index');
 Route::get('/formAgregarMarca', 'MarcasController@create');
 Route::post('/agregarMarca', 'MarcasController@store');
+Route::get('/formModificarMarca/{id}', 'MarcasController@edit');
+Route::post('/modificarMarca', 'MarcasController@update');
 
 ############## CRUD PRODUCTOS ###################
 Route::get('/adminProductos', 'ProductosController@index');
+Route::get('/formAgregarProducto', 'ProductosController@create');

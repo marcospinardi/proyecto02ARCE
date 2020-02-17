@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Categoria;
+use App\Marca;
 use App\Producto;
 use Illuminate\Http\Request;
 
@@ -30,6 +32,13 @@ class ProductosController extends Controller
     public function create()
     {
         //
+        $marcas = Marca::all();
+        $categorias = Categoria::all();
+        return view('formAgregarProducto',
+            [
+                'marcas'=>$marcas,
+                'categorias'=>$categorias
+            ]);
     }
 
     /**
@@ -41,6 +50,19 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         //
+        $validacion = $request->validate([
+            'prdImagen' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        $imageName = 'noDisponible.jpg';
+        if( $request->file('prdImagen') ) {
+            //$imageName = time().'.'.request()->prdImagen->getClientOriginalExtension();
+            $imagen = $request->file('prdImagen');
+            //$imagen->getClientOriginalExtension();
+            $imageName = $request->prdImagen->getClientOriginalName();
+            $request->prdImagen->move(public_path('images/productos'), $imageName);
+        }
+        return $imageName;
     }
 
     /**
