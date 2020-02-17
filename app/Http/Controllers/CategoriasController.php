@@ -27,6 +27,7 @@ class CategoriasController extends Controller
     public function create()
     {
         //
+        return view('formAgregarCategoria');
     }
 
     /**
@@ -38,6 +39,16 @@ class CategoriasController extends Controller
     public function store(Request $request)
     {
         //
+        $categoria = new Categoria();
+        ######## validacion
+        $validacion = $request->validate(
+            [
+                'catNombre' => 'required|min:3|max:75',
+            ]
+        );
+        $categoria->catNombre = request('catNombre');
+        $categoria->save();
+        return redirect('/adminCategorias')->with('mensaje', 'Categoria '.$categoria->catNombre.' agregada con éxito');
     }
 
     /**

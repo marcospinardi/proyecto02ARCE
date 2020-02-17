@@ -35,6 +35,8 @@ Route::get('/form', function(){
 
 //Route::view('/adminCategorias', 'adminCategorias');
 Route::get('/adminCategorias', 'CategoriasController@index');
+Route::get('/formAgregarCategoria', 'CategoriasController@create');
+Route::post('/agregarCategoria', 'CategoriasController@store');
 
 ############## CRUD Marcas ###################
 Route::get('/adminMarcas', 'MarcasController@index');
