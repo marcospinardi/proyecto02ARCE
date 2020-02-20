@@ -15,7 +15,7 @@
                 <th>Categoria</th>
                 <th>Presentacion</th>
                 <th>Stock</th>
-                <th>Imagden</th>
+                <th>Imagen</th>
                 <th colspan="2">
                     <a href="/formAgregarProducto" class="btn btn-dark">
                         Agregar
@@ -28,8 +28,8 @@
             <tr>
                 <td>{{ $producto->prdNombre }}</td>
                 <td>{{ $producto->prdPrecio }}</td>
-                <td>{{ $producto->idMarca }}</td>
-                <td>{{ $producto->idCategoria }}</td>
+                <td>{{ $producto->getMarca->mkNombre }}</td>
+                <td>{{ $producto->getCategoria->catNombre }}</td>
                 <td>{{ $producto->Presentacion }}</td>
                 <td>{{ $producto->prdStock }}</td>
                 <td><img src="{{ asset('images/productos') }}/{{ $producto->prdImagen }}" class="img-thumbnail"></td>

@@ -17,7 +17,7 @@ class ProductosController extends Controller
     public function index()
     {
         //
-        $productos = Producto::all();
+        $productos = Producto::with('getMarca', 'getCategoria')->get();
         return view('adminProductos',
             [
                 'productos'=>$productos
